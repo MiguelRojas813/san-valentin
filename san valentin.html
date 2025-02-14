@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi amorrr</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            background: white;
+            color: #ff4081;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            z-index: 10;
+        }
+        h1, p {
+            font-family: 'Pacifico', cursive;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 5px;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .hidden {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            body {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .container {
+                width: 50%;
+                max-width: 500px;
+            }
+        }
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            color: #ff4081;
+            animation: fall 5s linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="pantalla1">
+        <h2>Tengo algo para ti... 💌</h2>
+        <button onclick="mostrarPantalla(2)">Haz clic aquí</button>
+    </div>
+
+    <div class="container hidden" id="pantalla2">
+        <h2>Te quieres casar conmigo? 💖</h2>
+        <p>si pones que no me dare cuentaaa </p>
+        <button onclick="mostrarPantalla(4)">Sísi!!</button>
+        <button onclick="mostrarPantalla(3)">No!</button>
+    </div>
+    
+    <div class="container hidden" id="pantalla3">
+        <h2>Ya no me quieres😔</h2>
+        <p>ya me notifico que pusiste que no</p>
+        <button onclick="mostrarPantalla(4)">Di que si quieresss</button>
+    </div>
+
+    <div class="container hidden" id="pantalla4">
+        <h2>Yo tambien mi amor pero despuesss 🤣🤣 te amoooo💕</h2>
+        <p>ahora la question de verdad</p>
+        <button onclick="mostrarPantalla(5)">Continuee señoraaa</button>
+    </div>
+
+    <div class="container hidden" id="pantalla5">
+        <h2>Quieres ser mi san valentin?🥺💖</h2>
+        <button onclick="mostrarPantalla(6)">SIII!!</button>
+        <button onclick="mostrarPantalla(6)">Claro que si!!</button>
+    </div>
+
+    <div class="container hidden" id="pantalla6">
+        <h2>¡Yo sabia que si! 💕</h2>
+        <p>Para nada habia solo un opcion</p>
+        <button onclick="mostrarPantalla(7)">Next</button>
+    </div>
+
+    <div class="container hidden" id="pantalla7">
+        <h2>Eres lo mejor que me ha pasado, te adoro. 🥰🥰
+            <br>Y te amooo con todo mi ser. ❤️❤️❤️
+        </h2>
+    
+    </div>
+
+    <script>
+        function mostrarPantalla(num) {
+            document.getElementById("pantalla1").classList.add("hidden");
+            document.getElementById("pantalla2").classList.add("hidden");
+            document.getElementById("pantalla3").classList.add("hidden");
+            document.getElementById("pantalla4").classList.add("hidden");
+            document.getElementById("pantalla5").classList.add("hidden");
+            document.getElementById("pantalla6").classList.add("hidden");
+            document.getElementById("pantalla7").classList.add("hidden");
+            document.getElementById("pantalla" + num).classList.remove("hidden");
+        }
+
+        function crearCorazon() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+        
+        setInterval(crearCorazon, 300);
+    </script>
+</body>
+</html>
